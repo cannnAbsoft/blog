@@ -18,8 +18,8 @@
         <input type="text" name="search" placeholder="Find Something" value="{{request('search')}}">
     </form>
     @foreach ($posts as $post)
-        <h1><a href="/post/{{ $post->slug }}" class="{{$loop->even ? 'foo' : ''}}">{{$post->title}}</a></h1>
-        <p>By <a href="/?author={{$post->author->userName}}">{{$post->author->userName}}</a> in <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a> </p>
+        <h1><a href="/post/{{ $post->slug }}" class="{{$loop->even ? 'foo' : ''}}" style="color: #2ca02c">{{$post->title}}</a></h1>
+        <p>By <a href="/?author={{$post->author->userName}}" style="color: rebeccapurple">{{$post->author->userName}}</a> in <a href="/categories/{{$post->category->slug}}" style="color: #82AAFF;">{{$post->category->name}}</a> </p>
         <div>
             {!! $post->excerpt !!}
         </div>

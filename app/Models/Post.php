@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory; //Post::factory() call PostFactory;
-    protected $fillable = ['title','excerpt','body'];
     protected $with = ['category','author'];
 
     public function scopeFilter($query, array $filters) //Post::newQuery->filter()
@@ -40,6 +39,12 @@ class Post extends Model
 //                ->orWhere('body','like','%'.request('search').'%');
 //        }
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function category() //category_id
     {
         return $this->belongsTo(Category::class);

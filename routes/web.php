@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\File;
@@ -29,6 +30,8 @@ Route::get('/', [PostController::class,'index']
 
 Route::get('/post/{post:slug}', [PostController::class, 'show']
 //Post::where('slug',$post)
+);
+Route::post('/posts/{post:slug}/comments', [PostCommentsController::class, 'store']
 );
 Route::get('/categories/{category:slug}', function (Category $category){
     return view('posts',[
