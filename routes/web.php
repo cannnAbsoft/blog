@@ -33,6 +33,8 @@ Route::get('/post/{post:slug}', [PostController::class, 'show']
 );
 Route::post('/posts/{post:slug}/comments', [PostCommentsController::class, 'store']
 );
+Route::get('/admin/posts/create',[PostController::class,'create'])->middleware('admin');
+Route::post('/admin/posts/create',[PostController::class,'store'])->middleware('admin');
 Route::get('/categories/{category:slug}', function (Category $category){
     return view('posts',[
         'posts'=> $category->posts,

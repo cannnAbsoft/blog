@@ -1,6 +1,9 @@
 @extends('layout')
 @section('content')
     <h1 style="color: #2ca02c">{{$post->title}}</h1>
+    <div>
+        <image src="/storage/{{$post->thumbnail}}"></image>
+    </div>
     <p>By <a href="/author/{{$post->author->userName}}" style="color: rebeccapurple">{{$post->author->userName}}</a> in <a href="/categories/{{$post->category->slug}}" style="color: #82AAFF;">{{$post->category->name}}</a> </p>
     <div>
         {!! $post->body !!}

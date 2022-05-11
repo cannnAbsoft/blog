@@ -16,7 +16,7 @@ x-show="show"
 @endif
 <article>
     @auth
-        <a>Welcome, {{auth()->user()->name}}</a>
+        <a style="color: red">Welcome, {{auth()->user()->name}}</a>
         <form action="/logout" method="post">
             @csrf
             <button type="submit">Logout</button>
