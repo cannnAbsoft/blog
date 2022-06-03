@@ -22,7 +22,8 @@ use App\Models\User;
 |
 */
 
-Route::get('/', [PostController::class,'index']
+Route::get('/',
+ [PostController::class,'index']
 //    \Illuminate\Support\Facades\DB::listen(function ($query){
 //        logger($query->sql, $query->bindings);
 //    });

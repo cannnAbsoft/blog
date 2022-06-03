@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Notifications\PostCreated;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -36,14 +37,18 @@ class PostController extends Controller
         $attributes = request()->validate([
             'title'=>'required',
             'slug'=>['required', Rule::unique('posts','slug')],
-            'thumbnail'=>'required|image',
+            'thumbnail'=>'required',
             'excerpt'=>'required',
             'body'=>'required',
             'category_id'=>['required', Rule::exists('categories','id')]
         ]);
         $attributes['user_id'] = auth()->id();
         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnail');
+
         Post::create($attributes);
+
+        auth()->user()->notify(new PostCreated());
+
         return redirect('/');
     }
 
